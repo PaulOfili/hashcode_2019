@@ -1,6 +1,6 @@
 from input import take_file
 
-photos = take_file('b_lovely_landscapes.txt')
+photos = take_file('a_example.txt')
 
 new_photos = []
 
@@ -23,12 +23,19 @@ print(new_photos)
 
 
 output = [new_photos[0][0]]
-for start in range(len(new_photos)):
+for start in range(len(new_photos)-1):
+    max = float('-inf')
+    endpoint = 0
     for end in range(start+1, len(new_photos)):
-        if len(new_photos[end][2].intersection(new_photos[start][2])) > 0:
-            output.append(new_photos[end][0])
-            new_photos[start+1], new_photos[end] = new_photos[end], new_photos[start+1]
-            break
+
+        if len(new_photos[end][2].intersection(new_photos[start][2])) > max:
+            endpoint = end
+            max = len(new_photos[end][2].intersection(new_photos[start][2]))
+
+    output.append(new_photos[endpoint][0])
+    new_photos[start+1], new_photos[endpoint] = new_photos[endpoint], new_photos[start+1]
+    print('yh')
+
 
 
 print(output)
@@ -41,7 +48,7 @@ for slide in output:
     file_output += '\n'
 
 
-with open('b_answer.txt', mode='w') as f_out:
+with open('a1_answer.txt', mode='w') as f_out:
     f_out.write(file_output)
 
 
