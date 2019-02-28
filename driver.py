@@ -1,6 +1,6 @@
 from input import take_file
 
-photos = take_file('a_example.txt')
+photos = take_file('d_pet_pictures.txt')
 
 new_photos = []
 
@@ -48,7 +48,7 @@ for slide in output:
     file_output += '\n'
 
 
-with open('a1_answer.txt', mode='w') as f_out:
+with open('d_answer.txt', mode='w') as f_out:
     f_out.write(file_output)
 
 
